@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <style>
+        html, body {
+            height: 100%;
+        }
+
+        .bloc-logo {
+            position: relative;
+            width: 130px;
+            height: 49px;
+            float: left;
+            margin-top: 25%;
+            margin-left: 45%;
+        }
+
+        .bloc-logo canvas,
+        .bloc-logo .logo-mask {
+            display: block;
+            width: 130px;
+            height: 49px;
+        }
+
+        .bloc-logo .logo-mask {
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-size: 130px;
+            background-image: url("https://sarcadass.github.io/granim.js/assets/img/logo-mask.png");
+            /*background-image: url("lib/img/emblemmatic-zeroice-logo-64(已去底).png");*/
+            text-indent: -9999px;
+        }
+        .canvas-image-wrapper {
+            background-color: #eee;
+            text-align: center;
+        }
+        .sandbox {
+            position: relative;
+            height: 100%;
+            border: solid 2px #eee;
+        }
+
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="sandbox canvas-image-wrapper">
+    <div class="bloc-logo">
+        <canvas id="logo-canvas"></canvas>
+        <a href="index.html" class="logo-mask">Granim.js</a>
+    </div>
+</div>
+
+
+
+<script src="lib/granim.min.js"></script>
+<script src="lib/jquery-3.1.0.min.js"></script>
+<script>
+    // 获取窗口宽度
+    if (window.innerWidth)
+        winWidth = window.innerWidth;
+    else if ((document.body) && (document.body.clientWidth))
+        winWidth = document.body.clientWidth;
+    // 获取窗口高度
+    if (window.innerHeight)
+        winHeight = window.innerHeight;
+    else if ((document.body) && (document.body.clientHeight))
+        winHeight = document.body.clientHeight;
+    // 通过深入 Document 内部对 body 进行检测，获取窗口大小
+    if (document.documentElement && document.documentElement.clientHeight && document.documentElement.clientWidth)
+    {
+        winHeight = document.documentElement.clientHeight;
+        winWidth = document.documentElement.clientWidth;
+    }
+    var granimInstance1 = new Granim({
+        element: '#logo-canvas',
+        direction: 'left-right',
+        opacity: [1, 1],
+        states : {
+            "default-state": {
+                gradients: [
+                    ['#EB3349', '#F45C43'],
+                    ['#FF8008', '#FFC837'],
+                    ['#4CB8C4', '#3CD3AD'],
+                    ['#24C6DC', '#514A9D'],
+                    ['#FF512F', '#DD2476'],
+                    ['#DA22FF', '#9733EE']
+                ],
+                transitionSpeed: 2000
+            }
+        }
+    });
+
+</script>
+
+</body>
+</html>
